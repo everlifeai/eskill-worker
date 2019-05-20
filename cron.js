@@ -28,11 +28,15 @@ exports.startService = function(){
         })
         //fetch available task and execute
         util.availableTasks((err, resp)=>{
-            let data = JSON.parse(resp)
-            let tasks = data.tasks
-            for(let i=0; i < tasks.length; i++){
-                distributeTask(tasks[i])
+            if(err) console.log(err)
+            else {
+                let data = JSON.parse(resp)
+                let tasks = data.tasks
+                for(let i=0; i < tasks.length; i++){
+                    distributeTask(tasks[i])
+                }
             }
+            
         })
 
         function distributeTask(task){

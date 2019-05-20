@@ -117,23 +117,29 @@ function deEnrollGroup (groupId, cb){
 }
 
 function availableJobs (cb){
-    let options ={
-        'auth' :{
-            'user': authChallenge.key,
-            'password': authChallenge.signed,
-            'sendImmediately': true
+    if(!seriveGateway)
+        cb('Please add everlife service gateway..')
+    else{
+        let options ={
+            'auth' :{
+                'user': authChallenge.key,
+                'password': authChallenge.signed,
+                'sendImmediately': true
+            }
         }
+        options['uri'] = `${seriveGateway}/wf/jobs`
+        options['method'] = 'GET'
+        request(options,(err,response,body)=>{
+            if(err) cb(err)
+            else cb(null, response.body)
+        })
     }
-    options['uri'] = `${seriveGateway}/wf/jobs`
-    options['method'] = 'GET'
-    request(options,(err,response,body)=>{
-        if(err) cb(err)
-        else cb(null, response.body)
-    })
 }
 function claimJob(jobId, cb){
     if(!stellarAccount){
         cb('Stellar address is missing.')
+    }else if(!seriveGateway){
+        cb('Please add everlife service gateway..')
     }else{
         let options ={
             'auth' :{
@@ -161,41 +167,49 @@ function claimJob(jobId, cb){
 }
 
 function availableTasks (cb){
-    let options ={
-        'auth' :{
-            'user': authChallenge.key,
-            'password': authChallenge.signed,
-            'sendImmediately': true
+    if(!seriveGateway){
+        cb('Please add everlife service gateway..')
+    } else {
+        let options ={
+            'auth' :{
+                'user': authChallenge.key,
+                'password': authChallenge.signed,
+                'sendImmediately': true
+            }
         }
+        options['uri'] = `${seriveGateway}/wf/task`
+        options['method'] = 'GET'
+        console.log(options)
+        request(options,(err,response,body)=>{
+            if(err) cb(err)
+            else cb(null, response.body)
+        })
     }
-    options['uri'] = `${seriveGateway}/wf/task`
-    options['method'] = 'GET'
-    console.log(options)
-    request(options,(err,response,body)=>{
-        if(err) cb(err)
-        else cb(null, response.body)
-    })
 }
 function sumbitTask(taskId, result, cb){
-    let options ={
-        'auth' :{
-            'user': authChallenge.key,
-            'password': authChallenge.signed,
-            'sendImmediately': true
+    if(!seriveGateway)
+        cb('Please add everlife service gateway..')
+    else{
+        let options ={
+            'auth' :{
+                'user': authChallenge.key,
+                'password': authChallenge.signed,
+                'sendImmediately': true
+            }
         }
+        options['json'] = {
+            'action':'complete',
+            'variables':[
+                {'name':'work_result','value': result}
+            ]
+        }
+        options['uri'] = `${seriveGateway}/wf/task/${taskId}`
+        options['method'] = 'POST'
+        request(options,(err,response,body)=>{
+            if(err) cb(err)
+            else cb(null, response.body)
+        })
     }
-    options['json'] = {
-        'action':'complete',
-        'variables':[
-            {'name':'work_result','value': result}
-        ]
-    }
-    options['uri'] = `${seriveGateway}/wf/task/${taskId}`
-    options['method'] = 'POST'
-    request(options,(err,response,body)=>{
-        if(err) cb(err)
-        else cb(null, response.body)
-    })
 }
 
 module.exports ={
