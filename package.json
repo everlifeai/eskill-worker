@@ -9,13 +9,13 @@
   "author": "Rajeshkannan R <rrajeshkannanbca@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.0",
     "cote": "0.20.0",
-    "request": "2.88.0",
+    "cron": "^1.7.1",
+    "crypto-js": "3.1.9-1",
     "dotenv": "8.0.0",
-    "elife-util":"everlifeai/elife-utils",
-    "cron": "1.7.1",
-    "axios":"0.18.0",
-    "crypto-js":"3.1.9-1",
-    "http-status-codes":"1.3.2"
+    "elife-utils": "git+https://github.com/everlifeai/elife-utils.git",
+    "http-status-codes": "1.3.2",
+    "request": "2.88.0"
   }
 }
