@@ -196,7 +196,8 @@ function sumbitTask (taskId, result, cb) {
     options['json'] = {
       'action': 'complete',
       'variables': [
-        { 'name': 'work_result', 'value': JSON.stringify(result) }
+        { 'name': 'work_result', 'value': JSON.stringify(result) },
+        { 'name': 'worker_id', 'value': keyMapper.toUrlSafeEd25519Key(authChallenge.key)}
       ]
     }
     options['uri'] = `${serviceGateway}/wf/task/${taskId}`
