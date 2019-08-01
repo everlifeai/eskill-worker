@@ -25,7 +25,7 @@ const stellarClient = new cote.Requester({
  *  and load the stealler public key for payment
  */
 function loadConfig () {
-  ssbClient.send({ type: 'everlie-service-auth' }, (err, res) => {
+  ssbClient.send({ type: 'everlife-service-auth' }, (err, res) => {
     if (err) u.showErr(err)
     else {
       authChallenge = res
