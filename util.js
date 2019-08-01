@@ -61,7 +61,7 @@ function getJobList(data){
   console.log( JSON.parse(data))
   let groups = JSON.parse(data).groups;
   let jobDetails = '';
-  if(!groups) return 'No jobs available at this moment.'
+  if(!groups || groups.length == 0) return 'No jobs available at this moment.'
   else{
       for(let i = 0; i < groups.length; i++){
         jobDetails += groups[i].id + ' - ' + groups[i].name + '\n';
