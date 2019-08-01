@@ -13,7 +13,7 @@ let REGISTRY = {}
 exports.startService = function () {
   console.log('starting cronjob....')
   util.loadConfig()
-  const job = new CronJob('0 */1 * * * *', function () {
+  const job = new CronJob('0 */5 * * * *', function () {
     // fetch available task and execute
     util.availableTasks((err, resp) => {
       if (err) console.log(err)
