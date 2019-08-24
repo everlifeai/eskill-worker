@@ -52,14 +52,21 @@ function getEnrollmentStatus (cb) {
     options['uri'] = `${serviceGateway}/wf/enroll`
     options['method'] = 'GET'
     request(options, (err, response, body) => {
-      if (err) { cb(err) } else { cb(null, getJobList(response.body)) }
+      if (err) cb(err)
+      else {
+          try {
+              let res = JSON.parse(response.body)
+              cb(null, res)
+          } catch(e) {
+              cb(e)
+          }
+      }
     })
   }
 }
 
 function getJobList(data){
-  console.log( JSON.parse(data))
-  let groups = JSON.parse(data).groups;
+  let groups = data.groups;
   let jobDetails = '';
   if(!groups || groups.length == 0) return 'No jobs available at this moment.'
   else{
@@ -217,5 +224,6 @@ module.exports = {
   enrollGroup,
   deEnrollGroup,
   getEnrollmentStatus,
+  getJobList,
   loadConfig
 }

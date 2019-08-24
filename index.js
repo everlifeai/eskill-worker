@@ -55,6 +55,13 @@ function startMicroservice () {
       cb()
     }
   })
+
+  /*    outcome/
+   * Respond to request for job list
+   */
+  svc.on('joblist', (req, cb) => {
+    util.getEnrollmentStatus(cb)
+  })
 }
 
 function registerWithCommMgr () {
@@ -81,7 +88,7 @@ function enroll (req, cb) {
       if (err) {
         sendReply(err, req)
       } else {
-        sendReply(res, req)
+        sendReply(util.getJobList(res), req)
       }
     })
   } else if (req.msg.startsWith('/enroll')) {
