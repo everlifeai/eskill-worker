@@ -161,7 +161,6 @@ function claimJob (jobId, cb) {
         { 'name': 'worker_id', 'value': keyMapper.toUrlSafeEd25519Key(authChallenge.key)
         }]
     }
-    console.log(options)
     request(options, (err, response, body) => {
       if (err) cb(err)
       else cb(null, response.body)
@@ -182,7 +181,6 @@ function availableTasks (cb) {
     }
     options['uri'] = `${serviceGateway}/wf/task`
     options['method'] = 'GET'
-    console.log(options)
     request(options, (err, response, body) => {
       if (err) cb(err)
       else cb(null, response.body)
@@ -190,7 +188,6 @@ function availableTasks (cb) {
   }
 }
 function sumbitTask (taskId, result, cb) {
-  console.log(taskId)
   console.log(JSON.stringify(result))
   if (!serviceGateway) { cb('Please add everlife service gateway..') } else {
     let options = {

@@ -20,7 +20,6 @@ exports.startService = function () {
       else {
         let data = JSON.parse(resp)
         let tasks = data.tasks
-        console.log(tasks)
         if (tasks) {
           for (let i = 0; i < tasks.length; i++) {
             distributeTask(tasks[i])
@@ -31,6 +30,7 @@ exports.startService = function () {
 
     function distributeTask (task) {
       if (!task.skill) return
+      console.log(`Performing task for: ${task.skill}(${task.id})`)
       if (!REGISTRY[task.skill]) {
         REGISTRY[task.skill] = new cote.Requester({
           name: 'elife-worker',
