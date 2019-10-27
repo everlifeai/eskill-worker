@@ -1,7 +1,6 @@
 {
   "name": "eskill-worker",
   "version": "1.2.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,5 +11,15 @@
     "cron": "^1.7.1",
     "dotenv": "8.0.0",
     "http-status-codes": "1.3.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/everlifeai/eskill-worker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/everlifeai/eskill-worker/issues"
+  },
+  "homepage": "https://github.com/everlifeai/eskill-worker#readme",
+  "description": "Allow the avatar to become a worker"
 }
