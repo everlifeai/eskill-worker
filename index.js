@@ -1,6 +1,6 @@
 'use strict'
 const cote = require('cote')({ statusLogsEnabled: false })
-const u = require('elife-utils')
+const u = require('@elife/utils')
 const util = require('./util')
 const cronJob = require('./cron')
 

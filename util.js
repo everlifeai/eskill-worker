@@ -4,7 +4,7 @@ const cote = require('cote')({ statusLogsEnabled: false })
 require('dotenv').config()
 const HttpStatus = require('http-status-codes')
 const keyMapper = require('./keymaper')
-const u = require('elife-utils')
+const u = require('@elife/utils')
 
 const serviceGateway = process.env.EVERLIFE_SERVICE_GATEWAY ? process.env.EVERLIFE_SERVICE_GATEWAY : "http://149.202.214.34:3000"
 let authChallenge
