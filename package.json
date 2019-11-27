@@ -1,18 +1,12 @@
 {
   "name": "eskill-worker",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rajeshkannan R <rrajeshkannanbca@gmail.com>",
   "license": "ISC",
-  "dependencies": {
-    "cron": "^1.7.1",
-    "dotenv": "8.0.0",
-    "http-status-codes": "1.3.2"
-  },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/everlifeai/eskill-worker.git"
