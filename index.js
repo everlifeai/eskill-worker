@@ -69,7 +69,7 @@ function registerWithCommMgr () {
     type: 'register-msg-handler',
     mskey: msKey,
     mstype: 'msg',
-    mshelp: [ { cmd: '/secret', txt: 'encode/decode secret messages!' } ]
+    mshelp: [ { cmd: '/enroll <job-id>', txt: 'To enroll in the job' } ]
   }, (err) => {
     if (err) u.showErr(err)
   })
