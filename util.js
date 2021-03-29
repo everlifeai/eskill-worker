@@ -2,7 +2,6 @@
 const request = require('request')
 const cote = require('cote')({ statusLogsEnabled: false })
 require('dotenv').config()
-const HttpStatus = require('http-status-codes')
 const keyMapper = require('@elife/utils/keymapper')
 const u = require('@elife/utils')
 
@@ -91,9 +90,9 @@ function enrollGroup (groupId, cb) {
     options['json'] = { wallet: stellarAccount }
     request(options, (err, response, body) => {
       if (err) { cb(err) } else {
-        if (response.statusCode === HttpStatus.CONFLICT) {
+        if (response.statusCode === 409) {
           cb(null, 'Already enrolled.')
-        } else if (response.statusCode === HttpStatus.OK) {
+        } else if (response.statusCode === 200) {
           cb(null, 'Enrolled successfully.')
         } else {
           cb(null, 'Something went wrong.')
